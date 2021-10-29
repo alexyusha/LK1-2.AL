@@ -1,12 +1,16 @@
-
+import javax.validation.constraints.NotNull;
 
 public class Client {
+    @NotNull
     private Enum<TypeClient> typeClient;
+    @NotNull
     private  String name;
+    @NotNull
     private String address;
 
     public Client(Enum<TypeClient> typeClient, String name, String address) {
         this.typeClient = typeClient;
+
         this.name = name;
         this.address = address;
     }

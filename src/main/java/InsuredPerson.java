@@ -1,15 +1,28 @@
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
+import java.util.Calendar;
 import java.util.Comparator;
 
 
 public class InsuredPerson{
-private String firstName;
-private String lastName;
-private String middleName;
-private String birthday;
-private String INN;
-private double price;
+    @NotNull
+    private String firstName;
+    @NotNull
+    private String lastName;
+    private String middleName;
+    @Past
+    @NotNull
+    private Calendar birthday;
+    @NotNull
+    @Positive
+    @Size(min = 12, max = 12)
+    private int INN;
+    @Positive
+    private double price;
 
-    public InsuredPerson(String firstName, String lastName, String middleName, String birthday, String INN, double price) {
+    public InsuredPerson(String firstName, String lastName, String middleName, Calendar birthday, int INN, double price) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.middleName = middleName;
@@ -17,6 +30,8 @@ private double price;
         this.INN = INN;
         this.price = price;
     }
+
+
 
     public String fullName(){
         String fullName = lastName + " " + firstName.substring(0, 1).toUpperCase() + "." + middleName.substring(0, 1).toUpperCase() + ".";
@@ -48,19 +63,19 @@ private double price;
         this.middleName = middleName;
     }
 
-    public String getBirthday() {
+    public Calendar getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(Calendar birthday) {
         this.birthday = birthday;
     }
 
-    public String getINN() {
+    public int getINN() {
         return INN;
     }
 
-    public void setINN(String INN) {
+    public void setINN(int INN) {
         this.INN = INN;
     }
 
@@ -84,17 +99,6 @@ class PersonSortAlphabetComparator implements Comparator<InsuredPerson>{
 class PersonSortBirthdayComparator implements Comparator<InsuredPerson>{
     @Override
     public int compare(InsuredPerson a, InsuredPerson b) {
-        int dateA = GetDate.getDay(a.getBirthday());
-        int dateB = GetDate.getDay(b.getBirthday());
-
-        if (dateA > dateB){
-            return -1;
-        }
-        else if (dateA < dateB){
-            return  1;
-        }
-        else {
-            return 0;
-        }
+       return a.getBirthday().compareTo(b.getBirthday());
     }
 }

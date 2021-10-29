@@ -1,14 +1,21 @@
+import javax.validation.constraints.*;
 import java.util.*;
 
 public class Contract {
+    @Positive
     private int number;
-    private String dateConclusion;
-    private String startContract;
-    private String finishContract;
+    @FutureOrPresent
+    private Calendar dateConclusion;
+    @Future
+    private Calendar startContract;
+    @Future
+    private Calendar finishContract;
+    @NotNull
     private Client client;
-    private List<InsuredPerson> insuredPeoples;
+    @NotEmpty
+    private Set<InsuredPerson> insuredPeoples;
 
-    public Contract(int number, String dateConclusion, String startContract, String finishContract, Client client, List<InsuredPerson> insuredPeoples) {
+    public Contract(int number, Calendar dateConclusion, Calendar startContract, Calendar finishContract, Client client, Set<InsuredPerson> insuredPeoples) {
         this.number = number;
         this.dateConclusion = dateConclusion;
         this.startContract = startContract;
@@ -24,7 +31,7 @@ public class Contract {
         return Math.ceil(sum * scale) / scale;
     }
 
-    private double traversal1(List<InsuredPerson> list){
+    /*private double traversal1(List<InsuredPerson> list){
         double sum = 0;
 
         for (int i = 0; i < list.size(); i++){
@@ -32,9 +39,20 @@ public class Contract {
         }
 
         return sum;
+    }*/
+
+    private double traversal1(Set<InsuredPerson> list){
+        double sum = 0;
+        Object[] person = list.toArray();
+        for (int i = 0; i < person.length; i++){
+            InsuredPerson per = (InsuredPerson)person[i];
+            sum += per.getPrice();
+        }
+
+        return sum;
     }
 
-    private double traversal2(List<InsuredPerson> list){
+    private double traversal2(Set<InsuredPerson> list){
         double sum = 0;
 
         for (InsuredPerson person : list){
@@ -44,7 +62,7 @@ public class Contract {
         return sum;
     }
 
-    private double traversal3(List<InsuredPerson> list){
+    private double traversal3(Set<InsuredPerson> list){
         double sum = 0;
 
         for(Iterator<InsuredPerson> iter = list.iterator(); iter.hasNext();){
@@ -54,7 +72,7 @@ public class Contract {
         return sum;
     }
 
-    private double traversal4(List<InsuredPerson> list){
+    /*private double traversal4(List<InsuredPerson> list){
         double sum = 0;
 
         for(ListIterator<InsuredPerson> iter = list.listIterator(); iter.hasNext();){
@@ -62,31 +80,49 @@ public class Contract {
         }
 
         return sum;
+    }*/
+
+    private double traversal4(Set<InsuredPerson> list){
+        double sum = 0;
+        Iterator iterator = list.iterator();
+        while (iterator.hasNext()){
+            InsuredPerson person = (InsuredPerson) iterator.next();
+            sum += person.getPrice();
+        }
+
+        return sum;
     }
 
-    private double traversal5(List<InsuredPerson> list){
+    private double traversal5(Set<InsuredPerson> list){
         return  list.stream().map(InsuredPerson::getPrice).mapToDouble(Double::doubleValue).sum();
     }
 
-    public void sort(List<InsuredPerson> list, sortType type){
+    public void sort(Set<InsuredPerson> list, sortType type){
+        List<InsuredPerson> insuredPeople = new ArrayList<>(list);
+         //TreeSet<InsuredPerson> set;
        if (sortType.ALPHABET.equals(type)){
             PersonSortAlphabetComparator personSortAlphabetComparator = new PersonSortAlphabetComparator();
-            list.sort(personSortAlphabetComparator);
+            insuredPeople.sort(personSortAlphabetComparator);
+            insuredPeople.sort(personSortAlphabetComparator);
+            //set = new TreeSet<>(list);
+           //set.addAll(list);
         }
         else{
             PersonSortBirthdayComparator personSortBirthdayComparator = new PersonSortBirthdayComparator();
-            list.sort(personSortBirthdayComparator);
+            insuredPeople.sort(personSortBirthdayComparator);
+           //set = new TreeSet<>(personSortBirthdayComparator);
+           //set.addAll(list);
         }
-
-        for (InsuredPerson person : list){
-            System.out.println(person.fullName() + " " + person.getBirthday() + " " + person.getINN());
+        for (InsuredPerson person : insuredPeople){
+            System.out.println(person.fullName() + " " + person.getBirthday().getTime() + " " + person.getINN());
         }
+        //return set;
     }
 
-    public InsuredPerson searchPerson(String INN){
+    public InsuredPerson searchPerson(int INN){
         InsuredPerson p = null;
         for (InsuredPerson person : insuredPeoples){
-            if (INN.equals(person.getINN())){
+            if (INN == person.getINN()){
                 p = person;
             }
         }
@@ -101,27 +137,27 @@ public class Contract {
         this.number = number;
     }
 
-    public String getDateConclusion() {
+    public Calendar getDateConclusion() {
         return dateConclusion;
     }
 
-    public void setDateConclusion(String dateConclusion) {
+    public void setDateConclusion(Calendar dateConclusion) {
         this.dateConclusion = dateConclusion;
     }
 
-    public String getStartContract() {
+    public Calendar getStartContract() {
         return startContract;
     }
 
-    public void setStartContract(String startContract) {
+    public void setStartContract(Calendar startContract) {
         this.startContract = startContract;
     }
 
-    public String getFinishContract() {
+    public Calendar getFinishContract() {
         return finishContract;
     }
 
-    public void setFinishContract(String finishContract) {
+    public void setFinishContract(Calendar finishContract) {
         this.finishContract = finishContract;
     }
 
@@ -133,11 +169,11 @@ public class Contract {
         this.client = client;
     }
 
-    public List<InsuredPerson> getInsuredPeoples() {
+    public Set<InsuredPerson> getInsuredPeoples() {
         return insuredPeoples;
     }
 
-    public void setInsuredPeoples(List<InsuredPerson> insuredPeoples) {
+    public void setInsuredPeoples(Set<InsuredPerson> insuredPeoples) {
         this.insuredPeoples = insuredPeoples;
     }
 }

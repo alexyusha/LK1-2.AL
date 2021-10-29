@@ -1,14 +1,12 @@
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
-        List<InsuredPerson> insuredPersonList = new ArrayList<>();
+        Set<InsuredPerson> insuredPersonList = new HashSet<>();
         Client client = new Client(TypeClient.INDIVIDUAL, "fullName", "address");
-        for (int i = 0; i < 10; i++){
+       /* for (int i = 0; i < 10; i++){
             insuredPersonList.add(new InsuredPerson("first" ,"ast", "iddle", "01.01.2004","000002", (Math.random() * 10000.0)));
         }
 
@@ -21,14 +19,20 @@ public class Main {
         for (InsuredPerson person : insuredPersonList){
             System.out.println(person.fullName() + " " + person.getPrice());
         }
-        System.out.println(contract1.allSum());
-        /*insuredPersonList.add(new InsuredPerson("irst" ,"last", "middle", "10.01.2003","000001", (Math.random() * 10000.0)));
-        insuredPersonList.add(new InsuredPerson("first" ,"ast", "iddle", "01.01.2004","000002", (Math.random() * 10000.0)));
-        insuredPersonList.add(new InsuredPerson("first" ,"ti", "d", "26.01.2002","000003", (Math.random() * 10000.0)));
-        insuredPersonList.add(new InsuredPerson("first" ,"ti", "d", "13.03.2002","000003", (Math.random() * 10000.0)));
-        insuredPersonList.add(new InsuredPerson("first" ,"ti", "d", "30.06.2001","000003", (Math.random() * 10000.0)));
-        Contract contract1 = new Contract(1, "10.10.2010" ,"10.10.2010", "10.10.2020", client, insuredPersonList);
-       contract1.sort(insuredPersonList, sortType.ALPHABET);*/
+        System.out.println(contract1.allSum());*/
+        insuredPersonList.add(new InsuredPerson("irst" ,"last", "middle", GetDate.getDate(10,10,2010),1, (Math.random() * 10000.0)));
+        insuredPersonList.add(new InsuredPerson("first" ,"ast", "iddle", GetDate.getDate(20,2,2001),2, (Math.random() * 10000.0)));
+        insuredPersonList.add(new InsuredPerson("firs" ,"ti5", "d6", GetDate.getDate(10,10,2010),3, (Math.random() * 10000.0)));
+        insuredPersonList.add(new InsuredPerson("fir" ,"ti", "d4", GetDate.getDate(10,10,2010),4, (Math.random() * 10000.0)));
+        insuredPersonList.add(new InsuredPerson("first" ,"t5i", "d", GetDate.getDate(10,10,2010),5, (Math.random() * 10000.0)));
+        Contract contract1 = new Contract(1, GetDate.getDate(10,10,2010) ,GetDate.getDate(10,10,2010), GetDate.getDate(10,10,2010), client, insuredPersonList);
+       /*for (InsuredPerson person : insuredPersonList){
+           System.out.println(person);
+       }*/
+        contract1.sort(insuredPersonList, sortType.ALPHABET);
+
+
+
 
     }
 }

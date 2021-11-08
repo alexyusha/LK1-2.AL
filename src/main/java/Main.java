@@ -1,38 +1,74 @@
-
-import java.util.HashSet;
-import java.util.Set;
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) {
-        Set<InsuredPerson> insuredPersonList = new HashSet<>();
-        Client client = new Client(TypeClient.INDIVIDUAL, "fullName", "address");
-       /* for (int i = 0; i < 10; i++){
-            insuredPersonList.add(new InsuredPerson("first" ,"ast", "iddle", "01.01.2004","000002", (Math.random() * 10000.0)));
-        }
+    public static void main(String[] args) throws IOException {
+        /*Set<InsuredPerson> insuredPersonList = new HashSet<>();
 
-        Contract contract1 = new Contract(1, "10.10.2010" ,"10.10.2010", "10.10.2020", client, insuredPersonList);
-        System.out.println(contract1.getNumber());
-        System.out.println(contract1.getDateConclusion());
-        System.out.println(contract1.getStartContract());
-        System.out.println(contract1.getFinishContract());
-        System.out.println(contract1.getClient().getName());
-        for (InsuredPerson person : insuredPersonList){
-            System.out.println(person.fullName() + " " + person.getPrice());
-        }
-        System.out.println(contract1.allSum());*/
-        insuredPersonList.add(new InsuredPerson("irst" ,"last", "middle", GetDate.getDate(10,10,2010),1, (Math.random() * 10000.0)));
-        insuredPersonList.add(new InsuredPerson("first" ,"ast", "iddle", GetDate.getDate(20,2,2001),2, (Math.random() * 10000.0)));
-        insuredPersonList.add(new InsuredPerson("firs" ,"ti5", "d6", GetDate.getDate(10,10,2010),3, (Math.random() * 10000.0)));
-        insuredPersonList.add(new InsuredPerson("fir" ,"ti", "d4", GetDate.getDate(10,10,2010),4, (Math.random() * 10000.0)));
-        insuredPersonList.add(new InsuredPerson("first" ,"t5i", "d", GetDate.getDate(10,10,2010),5, (Math.random() * 10000.0)));
-        Contract contract1 = new Contract(1, GetDate.getDate(10,10,2010) ,GetDate.getDate(10,10,2010), GetDate.getDate(10,10,2010), client, insuredPersonList);
-       /*for (InsuredPerson person : insuredPersonList){
-           System.out.println(person);
-       }*/
-        contract1.sort(insuredPersonList, sortType.ALPHABET);
+        Client client = new Client.Builder()
+                .withTypeClient(TypeClient.INDIVIDUAL)
+                .withName("fullName")
+                .withAddress("address")
+                .build();
+
+        insuredPersonList.add(new InsuredPerson.Builder()
+                .withFirstName("irst")
+                .withLastName("a")
+                .withMiddleName("middle")
+                .withBirthday(GetDate.getDate(10, 1,2003))
+                .withINN("1")
+                .withPrice(5000.0)
+                .build());
+        insuredPersonList.add(new InsuredPerson.Builder()
+                .withFirstName("first")
+                .withLastName( "b")
+                .withMiddleName("iddle")
+                .withBirthday(GetDate.getDate(1, 1,2004))
+                .withINN("2")
+                .withPrice(8000.0)
+                .build());
+        insuredPersonList.add(new InsuredPerson.Builder()
+                .withFirstName("first")
+                .withLastName("d")
+                .withMiddleName("d")
+                .withBirthday(GetDate.getDate(30, 6,2001))
+                .withINN("4")
+                .withPrice(1000.0)
+                .build());
+        insuredPersonList.add(new InsuredPerson.Builder()
+                .withFirstName("first")
+                .withLastName("e")
+                .withMiddleName("d")
+                .withBirthday(GetDate.getDate(26, 1,2002))
+                .withINN("5")
+                .withPrice(0)
+                .build());
+        insuredPersonList.add(new InsuredPerson.Builder()
+                .withFirstName("first")
+                .withLastName("c")
+                .withMiddleName("d")
+                .withBirthday(GetDate.getDate(13, 3,2002))
+                .withINN("6")
+                .withPrice(100.50)
+                .build());
+
+        Contract contract1 = new Contract.Builder()
+                .withNumber(1)
+                .withDateConclusion(GetDate.getDate(10,10,2010))
+                .withStartContract(GetDate.getDate(10,10,2010))
+                .withFinishContract(GetDate.getDate(10,10,2010))
+                .withClient(client)
+                .withInsuredPeople(insuredPersonList)
+                .build();
 
 
 
-
+        File file = new File("src\\main\\resources\\contract.json");
+        */
+        /*ParsingCSV.parsingCsv("src\\main\\resources\\contract.csv");
+        for(Contract contract : Contract.allContracts){
+            System.out.println(contract);
+        }*/
     }
+
+
 }

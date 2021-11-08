@@ -1,6 +1,16 @@
-import javax.validation.constraints.NotNull;
+import lombok.*;
 
+import javax.validation.constraints.NotNull;
+import java.util.HashSet;
+import java.util.Set;
+
+@Setter
+@Getter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class Client {
+    public static Set<Client> allClients = new HashSet<>();
     @NotNull
     private Enum<TypeClient> typeClient;
     @NotNull
@@ -8,38 +18,33 @@ public class Client {
     @NotNull
     private String address;
 
-    public Client(Enum<TypeClient> typeClient, String name, String address) {
-        this.typeClient = typeClient;
+    public static class Builder {
+        private Client client;
 
-        this.name = name;
-        this.address = address;
-    }
+        public Builder(){
+            client = new Client();
+        }
 
-    public Enum<TypeClient> getTypeClient() {
-        return typeClient;
-    }
+        public Builder withTypeClient(TypeClient typeClient){
+            client.typeClient = typeClient;
+            return this;
+        }
 
-    public void setTypeClient(Enum<TypeClient> typeClient) {
-        this.typeClient = typeClient;
-    }
+        public Builder withName(String name){
+            client.name = name;
+            return this;
+        }
 
-    public String getName() {
-        return name;
-    }
+        public Builder withAddress(String address){
+            client.address = address;
+            return this;
+        }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+        public Client build(){
+            allClients.add(client);
+            return client;
+        }
     }
 }
-enum TypeClient{
-    INDIVIDUAL,
-    ENTITY
-}
+
+

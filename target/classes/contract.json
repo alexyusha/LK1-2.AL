@@ -1,0 +1,60 @@
+[
+  {
+    "number" : 1,
+    "dateConclusion" : "10-10-2010",
+    "startContract" : "10-10-2010",
+    "finishContract" : "10-10-2020",
+    "client" : {
+        "typeClient" : "INDIVIDUAL",
+        "name" : "Alex Gnilitsky",
+        "address" : "address"
+      },
+    "insuredPeoples" : [
+      {
+        "firstName" : "firstName",
+        "lastName" : "lastName",
+        "middleName" : "middleName",
+        "birthday" : "10-10-2010",
+        "INN" : "1",
+        "price" : 10000.0
+      },
+      {
+        "firstName" : "firstName1",
+        "lastName" : "lastName1",
+        "middleName" : "middleName1",
+        "birthday" : "10-10-2010",
+        "INN" : "2",
+        "price" : 10000.0
+      }
+    ]
+  },
+  {
+    "number" : 1,
+    "dateConclusion" : "10-10-2010",
+    "startContract" : "10-10-2010",
+    "finishContract" : "10-10-2020",
+    "client" : {
+      "typeClient" : "INDIVIDUAL",
+      "name" : "Alex Gnilitsky",
+      "address" : "address"
+    },
+    "insuredPeoples" : [
+      {
+        "firstName" : "firstName",
+        "lastName" : "lastName",
+        "middleName" : "middleName",
+        "birthday" : "10-10-2010",
+        "INN" : "1",
+        "price" : 10000.0
+      },
+      {
+        "firstName" : "firstName1",
+        "lastName" : "lastName1",
+        "middleName" : "middleName1",
+        "birthday" : "10-10-2010",
+        "INN" : "2",
+        "price" : 10000.0
+      }
+    ]
+  }
+]

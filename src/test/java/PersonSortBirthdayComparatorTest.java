@@ -1,19 +1,54 @@
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PersonSortBirthdayComparatorTest {
 
     @Test
     void compare() {
-       InsuredPerson person1 = new InsuredPerson("first", "c", "d",GetDate.getDate(10, 1,2002) , 6, 100.50);
-       InsuredPerson person2 = new InsuredPerson("first", "c", "d",GetDate.getDate(13, 3,2002) , 6, 100.50);
-       InsuredPerson person3 = new InsuredPerson("first", "c", "d",GetDate.getDate(5, 8,2001) , 6, 100.50);
-       InsuredPerson person4 = new InsuredPerson("first", "c", "d",GetDate.getDate(5, 8,2004) , 6, 100.50);
+        InsuredPerson person1 = new InsuredPerson.Builder()
+                .withFirstName("irst")
+                .withLastName("a")
+                .withMiddleName("middle")
+                .withBirthday(GetDate.getDate(10, 1,2003))
+                .withINN("1")
+                .withPrice(5000.0)
+                .build();
+        InsuredPerson person2 = new InsuredPerson.Builder()
+                .withFirstName("first")
+                .withLastName( "b")
+                .withMiddleName("iddle")
+                .withBirthday(GetDate.getDate(1, 1,2004))
+                .withINN("2")
+                .withPrice(8000.0)
+                .build();
+        InsuredPerson person3 =  new InsuredPerson.Builder()
+                .withFirstName("first")
+                .withLastName("d")
+                .withMiddleName("d")
+                .withBirthday(GetDate.getDate(30, 6,2001))
+                .withINN("4")
+                .withPrice(1000.0)
+                .build();
+        InsuredPerson person4 = new InsuredPerson.Builder()
+                .withFirstName("first")
+                .withLastName("e")
+                .withMiddleName("d")
+                .withBirthday(GetDate.getDate(26, 1,2002))
+                .withINN("5")
+                .withPrice(0)
+                .build();
+        InsuredPerson person5 = new InsuredPerson.Builder()
+                .withFirstName("first")
+                .withLastName("e")
+                .withMiddleName("d")
+                .withBirthday(GetDate.getDate(26, 1,2002))
+                .withINN("5")
+                .withPrice(0)
+                .build();
        PersonSortBirthdayComparator personSortBirthdayComparator = new PersonSortBirthdayComparator();
        assertEquals(-1, personSortBirthdayComparator.compare(person1, person2));
        assertEquals(1, personSortBirthdayComparator.compare(person1, person3));
-       assertEquals(-1, personSortBirthdayComparator.compare(person1, person4));
-
+       assertEquals(1, personSortBirthdayComparator.compare(person1, person4));
     }
 }

@@ -1,4 +1,7 @@
 import org.junit.jupiter.api.Test;
+import сom.work.example.myPackage.dict.GetDate;
+import сom.work.example.myPackage.model.InsuredPerson;
+import сom.work.example.myPackage.service.PersonSortAlphabetComparator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

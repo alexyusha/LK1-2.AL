@@ -1,4 +1,7 @@
 import org.junit.jupiter.api.Test;
+import сom.work.example.myPackage.dict.GetDate;
+import сom.work.example.myPackage.model.InsuredPerson;
+import сom.work.example.myPackage.service.PersonSortBirthdayComparator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -6,7 +9,7 @@ class PersonSortBirthdayComparatorTest {
 
     @Test
     void compare() {
-        InsuredPerson person1 = new InsuredPerson.Builder()
+       InsuredPerson person1 = new InsuredPerson.Builder()
                 .withFirstName("irst")
                 .withLastName("a")
                 .withMiddleName("middle")

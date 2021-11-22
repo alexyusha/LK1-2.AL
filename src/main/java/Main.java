@@ -1,8 +1,18 @@
+import сom.work.example.myPackage.dict.GetDate;
+import сom.work.example.myPackage.dict.TypeClient;
+import сom.work.example.myPackage.model.Client;
+import сom.work.example.myPackage.model.Contract;
+import сom.work.example.myPackage.model.InsuredPerson;
+import сom.work.example.myPackage.service.ParsingJson;
+
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        /*Set<InsuredPerson> insuredPersonList = new HashSet<>();
+    public static void main(String[] args) throws IOException, SQLException {
+        List<InsuredPerson> insuredPersonList = new LinkedList<>();
 
         Client client = new Client.Builder()
                 .withTypeClient(TypeClient.INDIVIDUAL)
@@ -61,14 +71,12 @@ public class Main {
                 .build();
 
 
-
-        File file = new File("src\\main\\resources\\contract.json");
-        */
-        /*ParsingCSV.parsingCsv("src\\main\\resources\\contract.csv");
-        for(Contract contract : Contract.allContracts){
-            System.out.println(contract);
-        }*/
+        ParsingJson parsingJson = new ParsingJson();
+        System.out.println(parsingJson.readFilesJson());
     }
+
+
+
 
 
 }

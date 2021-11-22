@@ -1,4 +1,8 @@
 import org.junit.jupiter.api.Test;
+import сom.work.example.myPackage.dict.GetDate;
+import сom.work.example.myPackage.dict.TypeClient;
+import сom.work.example.myPackage.model.Client;
+import сom.work.example.myPackage.service.ParsingCSV;
 
 import java.util.Calendar;
 
@@ -10,14 +14,14 @@ class ParsingCSVTest {
     @Test
     void parsingCsv() {
         /*String filename = "src\\main\\resources\\contract.csv";
-        ParsingCSV.parsingCsv(filename);
+        сom.work.example.myPackage.service.ParsingCSV.parsingCsv(filename);
 
-        String contracts = "Contract(number=1, dateConclusion=10.9.2010, startContract=10.9.2010, finishContract=10.9.2010, client=Client(typeClient=INDIVIDUAL, name=fullName, address=address), insuredPeoples[InsuredPerson(firstName=null, lastName=Gnilitsky, middleName=Serg, birthday=10.9.2010, INN=null, price=0.0), InsuredPerson(firstName=Alex, lastName=Gnilitsky, middleName=Serg, birthday=10.9.2010, INN=1, price=10000.0), InsuredPerson(firstName=Alex, lastName=null, middleName=null, birthday=10.9.2010, INN=null, price=10000.0)])\n" +
-                "Contract(number=2, dateConclusion=10.9.2010, startContract=10.9.2010, finishContract=10.9.2010, client=Client(typeClient=INDIVIDUAL, name=fullName, address=address), insuredPeoples[InsuredPerson(firstName=Alex, lastName=Gnilitsky, middleName=Serg, birthday=10.9.2010, INN=null, price=10000.0)])\n" +
-                "Contract(number=3, dateConclusion=10.9.2010, startContract=10.9.2010, finishContract=10.9.2010, client=Client(typeClient=INDIVIDUAL, name=fullName, address=address), insuredPeoples[InsuredPerson(firstName=Alex, lastName=Gnilitsky, middleName=Serg, birthday=10.9.2010, INN=null, price=10000.0)])\n";
+        String contracts = "сom.work.example.myPackage.model.Contract(number=1, dateConclusion=10.9.2010, startContract=10.9.2010, finishContract=10.9.2010, client=сom.work.example.myPackage.model.Client(typeClient=INDIVIDUAL, name=fullName, address=address), insuredPeoples[сom.work.example.myPackage.model.InsuredPerson(firstName=null, lastName=Gnilitsky, middleName=Serg, birthday=10.9.2010, INN=null, price=0.0), сom.work.example.myPackage.model.InsuredPerson(firstName=Alex, lastName=Gnilitsky, middleName=Serg, birthday=10.9.2010, INN=1, price=10000.0), сom.work.example.myPackage.model.InsuredPerson(firstName=Alex, lastName=null, middleName=null, birthday=10.9.2010, INN=null, price=10000.0)])\n" +
+                "сom.work.example.myPackage.model.Contract(number=2, dateConclusion=10.9.2010, startContract=10.9.2010, finishContract=10.9.2010, client=сom.work.example.myPackage.model.Client(typeClient=INDIVIDUAL, name=fullName, address=address), insuredPeoples[сom.work.example.myPackage.model.InsuredPerson(firstName=Alex, lastName=Gnilitsky, middleName=Serg, birthday=10.9.2010, INN=null, price=10000.0)])\n" +
+                "сom.work.example.myPackage.model.Contract(number=3, dateConclusion=10.9.2010, startContract=10.9.2010, finishContract=10.9.2010, client=сom.work.example.myPackage.model.Client(typeClient=INDIVIDUAL, name=fullName, address=address), insuredPeoples[сom.work.example.myPackage.model.InsuredPerson(firstName=Alex, lastName=Gnilitsky, middleName=Serg, birthday=10.9.2010, INN=null, price=10000.0)])\n";
 
         StringBuilder stringBuilder = new StringBuilder();
-        for (Contract contract : Contract.allContracts){
+        for (сom.work.example.myPackage.model.Contract contract : сom.work.example.myPackage.model.Contract.allContracts){
                 stringBuilder.append(contract).append("\n");
         }
 
@@ -36,13 +40,13 @@ class ParsingCSVTest {
         //?
         /*String line = "1,10-10-2010,10-10-2010,10-10-2010,INDIVIDUAL;fullName;address,Alex;Gnilitsky;Serg;10-10-2010;1;10000.0,;Gnilitsky;Serg;10-10-2010;1,Alex;;;10-10-2010;;10000.0";
         String[] data = line.split(",");
-        Set<InsuredPerson> getSet = ParsingCSV.getSetInsuredPerson(data);
-        List<InsuredPerson> list = new ArrayList<>();
+        Set<сom.work.example.myPackage.model.InsuredPerson> getSet = сom.work.example.myPackage.service.ParsingCSV.getSetInsuredPerson(data);
+        List<сom.work.example.myPackage.model.InsuredPerson> list = new ArrayList<>();
         list.addAll(getSet);
 
-        String ins = "InsuredPerson(firstName=Alex, lastName=null, middleName=null, birthday=10.9.2010, INN=null, price=10000.0)\n" +
-                "InsuredPerson(firstName=Alex, lastName=Gnilitsky, middleName=Serg, birthday=10.9.2010, INN=null, price=10000.0)\n" +
-                "InsuredPerson(firstName=null, lastName=Gnilitsky, middleName=Serg, birthday=10.9.2010, INN=null, price=0.0)";
+        String ins = "сom.work.example.myPackage.model.InsuredPerson(firstName=Alex, lastName=null, middleName=null, birthday=10.9.2010, INN=null, price=10000.0)\n" +
+                "сom.work.example.myPackage.model.InsuredPerson(firstName=Alex, lastName=Gnilitsky, middleName=Serg, birthday=10.9.2010, INN=null, price=10000.0)\n" +
+                "сom.work.example.myPackage.model.InsuredPerson(firstName=null, lastName=Gnilitsky, middleName=Serg, birthday=10.9.2010, INN=null, price=0.0)";
 
         StringBuilder stringBuilder = new StringBuilder();
         for(int i = 0; i < list.size();i++){

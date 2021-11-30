@@ -5,9 +5,10 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import сom.work.example.myPackage.dict.deser.CalendarDeserializer;
-import сom.work.example.myPackage.dict.deser.ClientDeserializer;
-import сom.work.example.myPackage.dict.deser.InsuredPersonDeserializer;
+import lombok.ToString;
+import сom.work.example.myPackage.model.deser.CalendarDeserializer;
+import сom.work.example.myPackage.model.deser.ClientDeserializer;
+import сom.work.example.myPackage.model.deser.InsuredPersonDeserializer;
 
 import javax.validation.constraints.*;
 import java.util.Calendar;
@@ -15,9 +16,9 @@ import java.util.List;
 
 @Getter
 @Setter
-
+@ToString
 @NoArgsConstructor
-public class Contract {
+public class Contract extends Object {
     @Positive
     private int number;
     @FutureOrPresent
@@ -99,7 +100,7 @@ public class Contract {
                 ", startContract="  + startContract.get(Calendar.DAY_OF_MONTH) + "." + startContract.get(Calendar.MONTH) + "." + startContract.get(Calendar.YEAR) +
                 ", finishContract="  + finishContract.get(Calendar.DAY_OF_MONTH) + "." + finishContract.get(Calendar.MONTH) + "." + finishContract.get(Calendar.YEAR) +
                 ", client=" + client +
-                ", insuredPeoples"  + insuredPeoples +
+                ", insuredPeoples="  + insuredPeoples +
                 ')';
     }
 

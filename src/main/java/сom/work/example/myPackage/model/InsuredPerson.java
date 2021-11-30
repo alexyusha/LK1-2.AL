@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import сom.work.example.myPackage.dict.deser.CalendarDeserializer;
+import сom.work.example.myPackage.model.deser.CalendarDeserializer;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;

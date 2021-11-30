@@ -1,7 +1,7 @@
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import сom.work.example.myPackage.dict.GetDate;
+import сom.work.example.myPackage.util.GetDate;
 import сom.work.example.myPackage.dict.TypeClient;
 import сom.work.example.myPackage.model.Client;
 import сom.work.example.myPackage.model.Contract;

@@ -1,5 +1,5 @@
 import org.junit.jupiter.api.Test;
-import сom.work.example.myPackage.dict.GetDate;
+import сom.work.example.myPackage.util.GetDate;
 import сom.work.example.myPackage.model.InsuredPerson;
 
 import static org.junit.jupiter.api.Assertions.*;

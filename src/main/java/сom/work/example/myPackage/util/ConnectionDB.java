@@ -1,5 +1,6 @@
 package сom.work.example.myPackage.util;
 
+import lombok.SneakyThrows;
 import org.apache.commons.dbcp2.BasicDataSourceFactory;
 
 import javax.sql.DataSource;
@@ -31,20 +32,20 @@ public class ConnectionDB {
         return dataSource.getConnection();
     }
 
-    public static   void closeConnection(PreparedStatement preparedStatement, Connection connection) throws SQLException {
-        preparedStatement.close();
-        connection.close();
+    @SneakyThrows
+    public static void closeConnection(PreparedStatement preparedStatement, Connection connection, ResultSet resultSet) {
+        if (preparedStatement != null) {
+            preparedStatement.close();
+        }
+        if (connection != null) {
+            connection.close();
+        }
+        if (resultSet != null) {
+            resultSet.close();
+        }
     }
 
-    public static   void closeConnection(PreparedStatement preparedStatement, Connection connection, ResultSet resultSet) throws SQLException {
-        preparedStatement.close();
-        connection.close();
-        resultSet.close();
-    }
-
-    public static void createDB(){
+    public static void createDB() {
 
     }
-
-
 }

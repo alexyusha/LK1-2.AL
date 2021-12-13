@@ -7,7 +7,8 @@
     "client" : {
         "typeClient" : "INDIVIDUAL",
         "name" : "Alex Gnilitsky",
-        "address" : "address"
+        "address" : "address",
+        "INN" : "15"
       },
     "insuredPeoples" : [
       {
@@ -36,7 +37,8 @@
     "client" : {
       "typeClient" : "INDIVIDUAL",
       "name" : "Alex Gnilitsky",
-      "address" : "address"
+      "address" : "address",
+      "INN" : "15"
     },
     "insuredPeoples" : [
       {

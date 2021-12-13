@@ -13,7 +13,8 @@ import java.util.List;
 public class InsuredPersonDeserializer extends JsonDeserializer<List<InsuredPerson>> {
 
     @Override
-    public List<InsuredPerson> deserialize(JsonParser p, DeserializationContext ctxt) throws IOException{
-        return new ObjectMapper().convertValue(p.readValueAsTree(), new TypeReference<List<InsuredPerson>>() {});
+    public List<InsuredPerson> deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
+        return new ObjectMapper().convertValue(p.readValueAsTree(), new TypeReference<List<InsuredPerson>>() {
+        });
     }
 }

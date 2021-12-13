@@ -25,7 +25,7 @@ public class ParsingCSV {
     private static final int LENGTH_INSURED_PEOPLE = 6;
     private static final int LENGTH_CONTRACT = 6;
 
-    public static void parsingCsv(String filename) throws ArrayIndexOutOfBoundsException{
+    public static void parsingCsv(String filename) throws ArrayIndexOutOfBoundsException {
         List<String> contracts = new ArrayList<>();
 
         try {
@@ -34,40 +34,36 @@ public class ParsingCSV {
             e.printStackTrace();
         }
 
-        for (String str : contracts){
+        for (String str : contracts) {
             String temp = str.replaceAll("\\s+", "");
             String[] tempArr = temp.split(",");
 
             String[] data = Arrays.copyOfRange(tempArr, 0, Math.max(tempArr.length, LENGTH_CONTRACT));
 
             Contract contract = new Contract.Builder()
+                    .withNumber(data[INDEX_NUMBER])
                     .withDateConclusion(getDate(data[INDEX_DATE_CONCLUSION]))
                     .withStartContract(getDate(data[INDEX_START_CONTRACT]))
                     .withFinishContract(getDate(data[INDEX_FINISH_CONTRACT]))
                     .withClient(getClient(data[INDEX_CLIENT]))
-                    .withInsuredPeople(getSetInsuredPerson(data))
+                    .withInsuredPeople(getInsuredPerson(data))
                     .build();
 
-
-            if (!(checkNull(data[INDEX_NUMBER]) == null)){
-                contract.setNumber(Integer.parseInt(data[INDEX_NUMBER]));
-            }
         }
     }
 
-    public static String checkNull(String str){
-        if (str == null || str.equals("")){
+    public static String checkNull(String str) {
+        if (str == null || str.equals("")) {
             return null;
-        }
-        else {
+        } else {
             return str;
         }
     }
 
-    protected static List<InsuredPerson> getSetInsuredPerson(String...insuredPeople){
+    protected static List<InsuredPerson> getInsuredPerson(String... insuredPeople) {
         List<InsuredPerson> people = new LinkedList<>();
 
-        for (int i = INDEX_INSURED_PEOPLE; i < insuredPeople.length; i++){
+        for (int i = INDEX_INSURED_PEOPLE; i < insuredPeople.length; i++) {
             String[] temp = insuredPeople[i].split(";");
             String[] insuredPerson = Arrays.copyOfRange(temp, 0, LENGTH_INSURED_PEOPLE);
 
@@ -80,7 +76,7 @@ public class ParsingCSV {
                     .build();
 
 
-            if (!(checkNull(insuredPerson[5]) == null)){
+            if (!(checkNull(insuredPerson[5]) == null)) {
                 person.setPrice(Double.parseDouble(insuredPerson[5]));
             }
 
@@ -90,24 +86,21 @@ public class ParsingCSV {
         return people;
     }
 
-    public static Client getClient(String dataClient){
+    public static Client getClient(String dataClient) {
         Client client;
-        if (checkNull(dataClient) == null){
+        if (checkNull(dataClient) == null) {
             client = null;
-        }
-        else{
+        } else {
             TypeClient typeClient;
 
             String[] temp = dataClient.split(";");
             String[] strClient = Arrays.copyOfRange(temp, 0, LENGTH_CLIENT);
 
-            if (strClient[0].equals("INDIVIDUAL")){
+            if (strClient[0].equals("INDIVIDUAL")) {
                 typeClient = TypeClient.INDIVIDUAL;
-            }
-            else if (strClient[0].equals("ENTITY")){
+            } else if (strClient[0].equals("ENTITY")) {
                 typeClient = TypeClient.ENTITY;
-            }
-            else{
+            } else {
                 typeClient = null;
             }
 
@@ -121,11 +114,10 @@ public class ParsingCSV {
         return client;
     }
 
-    public static Calendar getDate(String date){
-        if (checkNull(date) == null){
+    public static Calendar getDate(String date) {
+        if (checkNull(date) == null) {
             return null;
-        }
-        else{
+        } else {
             SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
             Calendar calendar = Calendar.getInstance();
             try {

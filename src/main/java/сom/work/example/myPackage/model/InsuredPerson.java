@@ -16,7 +16,7 @@ import java.util.Calendar;
 @Getter
 @Setter
 @NoArgsConstructor
-public class InsuredPerson{
+public class InsuredPerson {
     @NotNull
     private String firstName;
     @NotNull
@@ -33,55 +33,55 @@ public class InsuredPerson{
     private String INN;
     @Positive
     private double price;
+    private String numberContract;
 
-    public static class Builder{
+    public static class Builder {
         private InsuredPerson insuredPerson;
 
         public Builder() {
             insuredPerson = new InsuredPerson();
         }
 
-        public Builder withFirstName(String firstName){
+        public Builder withFirstName(String firstName) {
             insuredPerson.firstName = firstName;
             return this;
         }
 
-        public Builder withLastName(String lastName){
+        public Builder withLastName(String lastName) {
             insuredPerson.lastName = lastName;
             return this;
         }
 
-        public Builder withMiddleName(String middleName){
+        public Builder withMiddleName(String middleName) {
             insuredPerson.middleName = middleName;
             return this;
         }
 
-        public Builder withBirthday(Calendar birthday){
+        public Builder withBirthday(Calendar birthday) {
             insuredPerson.birthday = birthday;
             return this;
         }
 
 
-        public Builder withINN(String INN){
+        public Builder withINN(String INN) {
             insuredPerson.INN = INN;
             return this;
         }
 
-        public Builder withPrice(double price){
+        public Builder withPrice(double price) {
             insuredPerson.price = price;
             return this;
         }
 
-        public InsuredPerson build(){
+        public InsuredPerson build() {
             return insuredPerson;
         }
     }
 
-    public String fullName(){
-        if (lastName != null && firstName != null && middleName != null){
-           return lastName.substring(0,1).toUpperCase() + lastName.substring(1) + " " + firstName.substring(0, 1).toUpperCase() + "." + middleName.substring(0, 1).toUpperCase() + ".";
-        }
-        else {
+    public String fullName() {
+        if (lastName != null && firstName != null && middleName != null) {
+            return lastName.substring(0, 1).toUpperCase() + lastName.substring(1) + " " + firstName.substring(0, 1).toUpperCase() + "." + middleName.substring(0, 1).toUpperCase() + ".";
+        } else {
             return null;
         }
     }
@@ -89,14 +89,15 @@ public class InsuredPerson{
     @Override
     public String toString() {
         return "сom.work.example.myPackage.model.InsuredPerson(" +
-                "firstName=" + firstName  +
+                "firstName=" + firstName +
                 ", lastName=" + lastName +
-                ", middleName=" + middleName  +
+                ", middleName=" + middleName +
                 ", birthday=" + birthday.get(Calendar.DAY_OF_MONTH) + "."
-                                + birthday.get(Calendar.MONTH) + "."
-                                + birthday.get(Calendar.YEAR) +
+                + birthday.get(Calendar.MONTH) + "."
+                + birthday.get(Calendar.YEAR) +
                 ", INN=" + INN +
                 ", price=" + price +
+                ", numberContract=" + numberContract +
                 ')';
     }
 

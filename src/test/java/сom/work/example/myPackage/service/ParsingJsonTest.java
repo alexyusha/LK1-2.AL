@@ -89,23 +89,23 @@ class ParsingJsonTest {
     @Test
     void searchFile() {
         String paths = "src";
-        String filenameJson = "F:\\Project\\JAVA IDEA\\task_work\\LK_1_AL\\src\\main\\resources\\contract.json";
-        String filenameCsv = "F:\\Project\\JAVA IDEA\\task_work\\LK_1_AL\\src\\main\\resources\\contract.csv";
+        String filenameJson = "F:\\Project\\JAVA IDEA\\task_work\\LK_1_AL\\src\\main\\resources\\JsonFiles\\contract.json";
+        String filenameCsv = "F:\\Project\\JAVA IDEA\\task_work\\LK_1_AL\\src\\main\\resources\\CsvFiles\\contract.csv";
 
 
         Set<File> setJson = ParsingJson.searchFile(paths, TypeFile.JSON);
 
         Set<File> setCSV = ParsingJson.searchFile(paths, TypeFile.CSV);
 
-        for (File x : setJson){
+        for (File x : setJson) {
             assertEquals(filenameJson, x.toString());
         }
 
-        for (File x1 : setCSV){
+        for (File x1 : setCSV) {
             assertEquals(filenameCsv, x1.toString());
         }
 
 
-}
+    }
 
 }

@@ -5,10 +5,10 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 import сom.work.example.myPackage.model.deser.CalendarDeserializer;
 import сom.work.example.myPackage.model.deser.ClientDeserializer;
 import сom.work.example.myPackage.model.deser.InsuredPersonDeserializer;
+import сom.work.example.myPackage.util.Alphabet;
 
 import javax.validation.constraints.*;
 import java.util.Calendar;
@@ -16,11 +16,10 @@ import java.util.List;
 
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
-public class Contract extends Object {
+public class Contract {
     @Positive
-    private int number;
+    private String number;
     @FutureOrPresent
     @JsonDeserialize(using = CalendarDeserializer.class)
     private Calendar dateConclusion;
@@ -38,69 +37,80 @@ public class Contract extends Object {
     @JsonProperty("insuredPeoples")
     private List<InsuredPerson> insuredPeoples;
 
-    public static class Builder{
+    public static class Builder {
         private Contract newContract;
 
-        public Builder(){
+        public Builder() {
             newContract = new Contract();
         }
 
-        public Builder withNumber(int number){
+        public Builder withNumber(String number) {
             newContract.number = number;
             return this;
         }
 
-        public Builder withDateConclusion(Calendar dateConclusion){
+        public Builder withDateConclusion(Calendar dateConclusion) {
             newContract.dateConclusion = dateConclusion;
             return this;
         }
 
-        public Builder withStartContract(Calendar startContract){
+        public Builder withStartContract(Calendar startContract) {
             newContract.startContract = startContract;
             return this;
         }
 
-        public Builder withFinishContract(Calendar finishContract){
+        public Builder withFinishContract(Calendar finishContract) {
             newContract.finishContract = finishContract;
             return this;
         }
 
-        public Builder withClient(Client client){
+        public Builder withClient(Client client) {
             newContract.client = client;
             return this;
         }
 
-        public Builder withInsuredPeople(List<InsuredPerson> insuredPeople){
+        public Builder withInsuredPeople(List<InsuredPerson> insuredPeople) {
+            for (InsuredPerson person : insuredPeople) {
+                person.setNumberContract(newContract.getFullNumberForPrint());
+            }
             newContract.insuredPeoples = insuredPeople;
             return this;
         }
 
-        public Contract build(){
+        public Contract build() {
+            newContract.number = newContract.getFullNumberForPrint();
             return newContract;
         }
     }
 
-    public String getFullNumberForPrint(){
-        StringBuilder fullNumber = new StringBuilder();
-        String format = String.format("%07d", number);
+    public String getFullNumberForPrint() {
+        if (number != null) {
+            StringBuilder fullNumber = new StringBuilder();
+            String format = ("0000000" + number).substring(number.length());
 
-        fullNumber.append(this.client.getTypeClient().toString().charAt(0));
-        fullNumber.append(format);
-        fullNumber.append("-");
-        fullNumber.append(this.insuredPeoples.size());
+            fullNumber.append(this.client.getTypeClient().toString().charAt(0))
+                    .append(format)
+                    .append("-")
+                    .append(Alphabet.alphabet.get(19));
 
-        return  fullNumber.toString();
+            return fullNumber.toString();
+            //fullNumber.append(this.insuredPeoples.size());
+        } else {
+            return null;
+        }
+
+
     }
 
-   @Override
+    @Override
     public String toString() {
         return "сom.work.example.myPackage.model.Contract(" +
                 "number=" + number +
-                ", dateConclusion=" + dateConclusion.get(Calendar.DAY_OF_MONTH) + "." + dateConclusion.get(Calendar.MONTH) + "." + dateConclusion.get(Calendar.YEAR) +
-                ", startContract="  + startContract.get(Calendar.DAY_OF_MONTH) + "." + startContract.get(Calendar.MONTH) + "." + startContract.get(Calendar.YEAR) +
-                ", finishContract="  + finishContract.get(Calendar.DAY_OF_MONTH) + "." + finishContract.get(Calendar.MONTH) + "." + finishContract.get(Calendar.YEAR) +
+                ", dateConclusion=" + dateConclusion.get(Calendar.DAY_OF_MONTH) + "." +(dateConclusion.get(Calendar.MONTH)+1) + "." + dateConclusion.get(Calendar.YEAR) +
+                ", startContract=" + startContract.get(Calendar.DAY_OF_MONTH) + "." + (startContract.get(Calendar.MONTH)+1) + "." + startContract.get(Calendar.YEAR) +
+                ", finishContract=" + finishContract.get(Calendar.DAY_OF_MONTH) + "." + (finishContract.get(Calendar.MONTH)+1) + "." + finishContract.get(Calendar.YEAR) +
                 ", client=" + client +
-                ", insuredPeoples="  + insuredPeoples +
+                ", insuredPeoples=" + insuredPeoples +
                 ')';
     }
 

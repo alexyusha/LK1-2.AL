@@ -11,7 +11,7 @@ public enum TypeFile {
         name = s;
     }
 
-    public String getValue(){
+    public String getValue() {
         return name;
     }
 }

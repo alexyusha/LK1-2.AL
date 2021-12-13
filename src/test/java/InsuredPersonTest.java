@@ -9,7 +9,7 @@ class InsuredPersonTest {
             .withFirstName("Alex")
             .withLastName("Gnilitsky")
             .withMiddleName("Serg")
-            .withBirthday(GetDate.getDate(26, 1,2002))
+            .withBirthday(GetDate.getDate(26, 1, 2002))
             .withINN("9")
             .withPrice(0)
             .build();
@@ -17,19 +17,15 @@ class InsuredPersonTest {
             .withFirstName(null)
             .withLastName("Gnilitsky")
             .withMiddleName("Serg")
-            .withBirthday(GetDate.getDate(26, 1,2002))
+            .withBirthday(GetDate.getDate(26, 1, 2002))
             .withINN("9")
             .withPrice(0)
             .build();
+
     @Test
     void fullName() {
         assertEquals("Gnilitsky A.S.", person.fullName());
         assertNull(person1.fullName());
     }
 
-    @Test
-    void checkINN() {
-        //assertEquals("9", person.getINN());
-        //assertNull(person1.getINN());
-    }
 }

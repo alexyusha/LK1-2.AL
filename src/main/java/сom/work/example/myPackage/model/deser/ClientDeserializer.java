@@ -16,16 +16,16 @@ public class ClientDeserializer extends JsonDeserializer<Client> {
     public Client deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
         try {
             JsonNode node = p.readValueAsTree();
-            if (node.isObject()){
+            if (node.isObject()) {
                 String type = node.get("typeClient").asText();
                 String name = node.get("name").asText();
                 String address = node.get("address").asText();
-                return new Client(TypeClient.valueOf(type), name, address);
-            }
-            else{
+                String INN = node.get("INN").asText();
+                return new Client(TypeClient.valueOf(type), name, address, INN);
+            } else {
                 return null;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             throw new IOException(e);
         }
 

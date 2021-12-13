@@ -4,13 +4,13 @@
 сom\work\example\myPackage\dict\SortType.class
 сom\work\example\myPackage\dict\TypeFile.class
 сom\work\example\myPackage\dict\TypeClient.class
-сom\work\example\myPackage\dict\CRUD.class
 сom\work\example\myPackage\model\deser\InsuredPersonDeserializer$1.class
 сom\work\example\myPackage\util\ConnectionDB.class
 сom\work\example\myPackage\service\PersonSortAlphabetComparator.class
 сom\work\example\myPackage\model\deser\ClientDeserializer.class
 сom\work\example\myPackage\dao\ContractDao.class
 сom\work\example\myPackage\service\ParsingJson.class
+сom\work\example\myPackage\service\ContractDBService.class
 сom\work\example\myPackage\dao\ClientDao.class
 сom\work\example\myPackage\model\Client.class
 сom\work\example\myPackage\model\deser\InsuredPersonDeserializer.class
@@ -19,8 +19,10 @@
 сom\work\example\myPackage\service\ParsingJson$1.class
 сom\work\example\myPackage\service\ParsingCSV.class
 сom\work\example\myPackage\model\Contract$Builder.class
+сom\work\example\myPackage\dao\CRUDTest.class
 сom\work\example\myPackage\model\Client$Builder.class
+сom\work\example\myPackage\util\Alphabet.class
 сom\work\example\myPackage\service\ContractServices.class
 сom\work\example\myPackage\dao\InsuredPersonDao.class
-сom\work\example\myPackage\controller\ContractController.class
+сom\work\example\myPackage\util\GetContracts.class
 сom\work\example\myPackage\model\deser\CalendarDeserializer.class
